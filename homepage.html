@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <link rel="icon" href=https://file.garden/aejvi8l_-hvXF54r/Graphics%20for%20the%20website/Mini%20pixels/tinyclover%20-%20Imgur.gif> 
+   <title>Malkins.com </title>
+   <meta charset="UTF-8">
+   <meta name="viewport">
+
+   <link rel="stylesheet" href="homepage.css">
+
+</head>
+
+<body>  
+    
+ <div class="top-border">
+   <img src="https://file.garden/aejvi8l_-hvXF54r/Graphics%20for%20the%20website/pngs/topborderlace.png"> 
+   <img src="https://file.garden/aejvi8l_-hvXF54r/Graphics%20for%20the%20website/pngs/topborderlace.png">
+ 
+ </div>
+    
+ <div class="container">
+
+     <header>
+
+       <div class="headerbanner">
+         <img src="https://file.garden/aejvi8l_-hvXF54r/Graphics%20for%20the%20website/pngs/websitebanner1.png" class="headertitle" width="400px" height="60px"> 
+         <img src="https://file.garden/aejvi8l_-hvXF54r/Graphics%20for%20the%20website/Mini%20pixels/littledancingclovers.gif" class="littledancingclovers" width="40px" height="40px">
+       </div>
+
+       <marquee behavior="scroll" direction="right" scrollamount="6">
+         <p> 100% gnome friendlyദ്ദി(•˙⚬˙• )</p>
+       </marquee>
+         
+     </header>
+
+     <time>
+         Calendar
+     </time>
+
+     <microblog>Micreoblog</microblog>
+
+     <status>Website´s Status</status>
+
+     <main>
+       <div class="maintext">
+           <div class="littleplants">
+               <img src="https://file.garden/aejvi8l_-hvXF54r/Graphics%20for%20the%20website/Mini%20pixels/littleplant1.gif">
+               <img src="https://file.garden/aejvi8l_-hvXF54r/Graphics%20for%20the%20website/Mini%20pixels/littleplant2.gif">
+           </div>
+                <p>Welcome to my website! This is a virtual display I made for myself, to archive things I made, like or wanted to talk about (basically nothing important or worth seeing, haha).</p>
+                <p>This website is really simple (like it is now) because I don´t know much about computers or coding, but I´m doing my best (even because it is the best I can do).</p>
+       </div>
+     </main>
+
+     <updates>
+
+       <div class="updates-top-tittle">Website´s updates <img src="https://file.garden/aejvi8l_-hvXF54r/Graphics%20for%20the%20website/Mini%20pixels/tinnyapple.gif"></div>
+
+          <div class="updates-content">
+
+          <div class="update-text">
+           <h3 class="update-tittle">12/09/2026 </h3>
+           <p class="update-text">I tried to refresh the website a bit.
+            We also have new pictures in the Diy gallery.
+           </p>
+         </div>
+
+     </div>
+
+     </updates>
+
+     <music>
+       <audio id="audio" src="https://file.garden/aejvi8l_-hvXF54r/Music/Background%20music/Pictures.%20leverfall(MP3_160K).mp3"></audio>   
+
+       <div class="snailcharm">
+         <img src="https://file.garden/aejvi8l_-hvXF54r/Graphics%20for%20the%20website/pngs/snailcharm.png" width="90px" height="140px">
+       </div>
+
+       <div class="music-player">
+           <div class="screen">
+               <div style="padding: 0 5px; overflow: hidden;">
+                 <marquee behavior="scroll" direction="left" scrollamount="1">
+                     <div class="trackTitle" id="trackTitle">Loading...</div>
+                 </marquee>
+               </div>
+             <input type="range" id="progress-bar" value="0" min="0" max="100">
+           </div>
+
+         <div class="buttons">
+           <button id="prev-btn"> ⏮ </button>
+           <button id="play-btn"> ► </button>
+           <button id="next-btn"> ⏭ </button>
+         </div>
+       </div>
+       <script>
+         const playlist = [
+         { src: 'https://file.garden/aejvi8l_-hvXF54r/Music/Background%20music/Leverfall%20-%20Pictures%20%5BExtended%5D(MP3_160K).mp3', title: 'Pictures, by leverfall (Extended)' },
+         { src: 'https://file.garden/aejvi8l_-hvXF54r/Music/Background%20music/why%20does%20time%20have%20to%20go%20by%20so%20fast.%20GAKHED(MP3_160K).mp3', title: ' Why does time have to go by so fast, by GAKHED' },
+           ];
+
+         const audio = document.getElementById('audio');
+         const playBtn = document.getElementById('play-btn');
+         const prevBtn = document.getElementById("prev-btn");
+         const nextBtn = document.getElementById("next-btn");
+         const trackTitleDisplay = document.getElementById('trackTitle');
+         const progressBar = document.getElementById('progress-bar');
+
+           let currentTrackIndex = 0;
+
+          function loadTrack(index) {
+           audio.src = playlist[index].src;
+           trackTitleDisplay.textContent = playlist[index].title;
+           }
+
+          function nextTrack() {
+           currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+           loadTrack(currentTrackIndex);
+           audio.play();
+           playBtn.textContent = '❚❚';
+           }
+
+         loadTrack(currentTrackIndex);
+
+         audio.addEventListener('ended', () => {
+         nextTrack();
+           });
+
+         playBtn.addEventListener('click', () => {
+
+           if (audio.paused) {
+           audio.play();
+           playBtn.textContent = '❚❚'; 
+           } else {
+           audio.pause();
+           playBtn.textContent = '►';
+           }
+           });
+
+         nextBtn.addEventListener('click', () => {
+           currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+           audio.src = playlist[currentTrackIndex];
+           loadTrack(currentTrackIndex);
+           audio.play();
+           });
+
+         prevBtn.addEventListener('click', () => {
+           currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+           audio.src = playlist[currentTrackIndex];
+           loadTrack(currentTrackIndex);
+           audio.play();
+          });
+
+         audio.addEventListener('loadedmetadata', () => {
+         progressBar.max = audio.duration;
+           });
+
+         audio.addEventListener('timeupdate', () => {
+         progressBar.value = audio.currentTime;
+           });
+
+         progressBar.addEventListener('input', () => {
+         audio.currentTime = progressBar.value;
+           });
+
+       </script>
+     </music>
+
+     <nav>
+       <h4> Navigation </h4>
+
+         <ul>
+             <li> 
+               <form action="diygallery.html">
+                 <button type="submit">DIY gallery </button>
+               </form>
+             </li>   
+             <li> 
+               <form action="doodlegallery.html">
+                 <button type="submit"> Doodle gallery</button>
+               </form>
+             </li>
+             <li>
+               <form action="">
+                 <button type="submit"> Thoughts bin *</button>
+               </form>
+             </li>
+             <li> 
+               <form acttion="">
+                 <button type="submit"> Codes bin * </button>
+               </form>
+            </li>
+         </ul>
+
+     </nav>
+
+     <footer>
+           <p> Made by: Malkins | 2026 - I lose my Neocities password</p>
+     </footer> 
+ </div>
+
+</body>
+
+
+</html>
